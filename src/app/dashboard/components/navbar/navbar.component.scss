@@ -1,0 +1,20 @@
+$iconWidth: 24px;
+
+mat-icon {
+  height: $iconWidth;
+  width: $iconWidth;
+  line-height: $iconWidth;
+  color: white;
+}
+
+.sidenav-toggle {
+  @media screen and (max-width: 720px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  display: none;
+  padding: 0;
+  margin: 8px;
+  min-width: $iconWidth;
+}

@@ -1,0 +1,64 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav
+    class="app-sidenav mat-elevation-z10"
+    #sidenav
+    [opened]="!isScreenSmall()"
+    [mode]="isScreenSmall() ? 'over' : 'side'"
+  >
+    <mat-toolbar color="primary">
+      <!-- <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <span>Dashboard</span>
+      <!-- <span class="example-spacer"></span> -->
+      <!-- <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+      >
+        <mat-icon>share</mat-icon>
+      </button> -->
+    </mat-toolbar>
+
+    <mat-nav-list role="list">
+      <a mat-list-item [routerLink]="[link.url]" *ngFor="let link of links">
+        {{ link.name }}</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="app-sidenav-content">
+    <app-navbar (toggleSidenav)="sidenav.toggle()"></app-navbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- <button type="button" mat-button (click)="sidenav.toggle()">
+      Open SideNav
+    </button> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container> -->

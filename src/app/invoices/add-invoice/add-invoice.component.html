@@ -1,0 +1,139 @@
+<mat-card>
+  <h2 *ngIf="isCreate">Create Invoice</h2>
+  <h2 *ngIf="!isCreate">Edit Invoice</h2>
+
+  <!-- For Debugging
+  {{ this.invoiceForm.value | json }} -->
+
+  <form
+    class="example-form"
+    [formGroup]="invoiceForm"
+    novalidate
+    (ngSubmit)="onSave()"
+  >
+    <!-- Item -->
+    <mat-form-field class="example-full-width" color="accent">
+      <mat-label>Item</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="item"
+        placeholder="Item purchased"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          invoiceForm.controls.item.invalid && invoiceForm.controls.item.touched
+        "
+      >
+        Item is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Date -->
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        readonly
+        [matDatepicker]="picker"
+        placeholder="Date"
+        formControlName="date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="
+          invoiceForm.controls.date.invalid && invoiceForm.controls.date.touched
+        "
+      >
+        Date is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Due -->
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        readonly
+        [matDatepicker]="due"
+        formControlName="due"
+        placeholder="Due date"
+      />
+
+      <mat-datepicker-toggle matSuffix [for]="due"></mat-datepicker-toggle>
+      <mat-datepicker #due></mat-datepicker>
+      <mat-error
+        *ngIf="
+          invoiceForm.controls.due.invalid && invoiceForm.controls.due.touched
+        "
+      >
+        Due date is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Qty -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Qty</mat-label>
+      <input type="number" matInput formControlName="qty" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          invoiceForm.controls.qty.invalid && invoiceForm.controls.qty.touched
+        "
+      >
+        Quantity is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Rate -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Rate</mat-label>
+      <input type="number" matInput formControlName="rate" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          invoiceForm.controls.rate.invalid && invoiceForm.controls.rate.touched
+        "
+      >
+        Rate is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Tax -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Tax</mat-label>
+      <input type="number" matInput formControlName="tax" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          invoiceForm.controls.tax.invalid && invoiceForm.controls.tax.touched
+        "
+      >
+        Tax is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Buttons -->
+    <div>
+      <button
+        *ngIf="isCreate"
+        [disabled]="invoiceForm.invalid"
+        mat-raised-button
+        color="accent"
+        type="submit"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="!isCreate"
+        [disabled]="invoiceForm.invalid"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        Update
+      </button>
+      &nbsp;
+      <button mat-raised-button (click)="onCancel()" type="reset">
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+.menu-bar {
+  position: absolute;
+  right: 60px;
+  color: white;
+  background-color: #ff4081;
+}
+
+mat-paginator {
+  margin-top: 1rem;
+  height: auto;
+}
+
+mat-toolbar {
+  margin-bottom: 1rem;
+}
